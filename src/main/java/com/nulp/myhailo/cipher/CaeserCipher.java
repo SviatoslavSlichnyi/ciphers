@@ -1,9 +1,15 @@
 package com.nulp.myhailo.cipher;
 
-import com.sun.xml.internal.ws.util.StringUtils;
+public class CaeserCipher implements Cipher {
 
-public class CaeserCipher {
-    public static String encrypt(String msg, int key) {
+    private final int key;
+
+    public CaeserCipher(int key) {
+        this.key = key;
+    }
+
+    @Override
+    public String encrypt(String msg) {
         if (msg.isEmpty() || key == 0) {
             return msg;
         }
@@ -46,7 +52,8 @@ public class CaeserCipher {
         return ciphertext.toString();
     }
 
-    public static String decrypt(String msg, int key) {
+    @Override
+    public String decrypt(String msg) {
         if (msg.isEmpty() || key == 0) {
             return msg;
         }
